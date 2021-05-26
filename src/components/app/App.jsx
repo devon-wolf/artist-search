@@ -4,8 +4,9 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import Search from '../../containers/Search';
-import Artist from '../../containers/Artist';
+import ReleasePage from '../../containers/ReleasePage';
+import SearchPage from '../../containers/SearchPage';
+import ArtistPage from '../../containers/ArtistPage';
 
 export default function App() {
   return (
@@ -15,22 +16,24 @@ export default function App() {
         <Route 
           path="/"
           exact
-          component={Search}
+          component={SearchPage}
         />
 
         <Route 
-          path="/artist/:artistID"
+          path="/artist/:artistID/:artistName"
           exact
-          component={Artist}
+          component={ArtistPage}
+        />
+
+        <Route 
+          exact
+          path="/release/:releaseID"
+          component={ReleasePage}
         />
 
         {/* <Route 
-          path="/release/:releaseID"
-        />
-
-        <Route 
           path="/song/:songID"
-        /> */}
+        />  */}
 
       </Switch>
     </Router>

@@ -5,7 +5,7 @@ import ResultsList from '../components/app/search/ResultsList';
 import { Spinner } from '../components/Spinner';
 import { getArtists } from '../services/api-utils';
 
-const Search = () => {
+const SearchPage = () => {
   // const [loading, setLoading] = useState(false);
   const [artists, setArtists] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -27,7 +27,7 @@ const Search = () => {
   };
 
   useEffect(() => {
-    if (artists.length) {
+    if(artists.length) {
       setLoading(true);
       getArtists(searchTerm, page)
         .then(({ artists, count }) => {
@@ -60,4 +60,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchPage;
