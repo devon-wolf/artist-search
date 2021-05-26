@@ -2,15 +2,18 @@
 export const getArtists = (searchTerm, page) => {
   return fetch(
     `http://musicbrainz.org/ws/2/artist?query=${searchTerm}&fmt=json&limit=25&offset=${
-      page ? page * 25 + 1 : 0
+      page ? (page - 1) * 25 + 1 : 0
     }`
   )
     .then((result) => result.json())
-    .then(({ artists }) => {
-      return artists.map(({ id, name }) => ({
-        artistID: id,
-        name,
-      }));
+    .then(({ artists, count }) => {
+      return {
+        artists: artists.map(({ id, name }) => ({
+          artistID: id,
+          name,
+        })),
+        count,
+      };
     })
     .catch(console.error);
 };
