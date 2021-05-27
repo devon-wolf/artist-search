@@ -26,7 +26,7 @@ export const getReleases = (artistID) => {
     .then(({ releases }) => {
       return releases.map((release) => ({
         releaseID: release.id,
-        title: release.title,
+        releaseTitle: release.title,
         year: release.date || 'unknown',
         coverArt: release['cover-art-archive'].front
           ? `http://coverartarchive.org/release/${release.id}/front`
@@ -45,7 +45,7 @@ export const getRecordings = (releaseID) => {
     .then(({ recordings }) => {
       return recordings.map(({ id, title }) => ({
         recordingID: id,
-        title,
+        recordingTitle: title,
       }));
     })
     .catch(console.error);
@@ -55,5 +55,7 @@ export const getRecordings = (releaseID) => {
 export const getLyrics = (artistName, recordingTitle) => {
   return fetch(`https://api.lyrics.ovh/v1/${artistName}/${recordingTitle}`)
     .then((result) => result.json())
-    .then(({ lyrics }) => lyrics);
+    .then(({ lyrics }) => lyrics)
+    .catch(console.error);
+
 };

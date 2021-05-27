@@ -9,7 +9,7 @@ const ResultsList = ({ artists }) => {
       <ul aria-label="artists">
         {artists &&
           artists.map(({ artistID, name }) => (
-            <Link key={artistID} to={`/artist/${artistID}`}>
+            <Link key={artistID} to={`/artist/${artistID}/${name}`}>
               <li>
                 <Result name={name} />
               </li>
