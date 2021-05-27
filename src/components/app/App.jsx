@@ -7,6 +7,7 @@ import {
 import ReleasePage from '../../containers/ReleasePage';
 import SearchPage from '../../containers/SearchPage';
 import ArtistPage from '../../containers/ArtistPage';
+import LyricsPage from '../../containers/LyricsPage';
 
 export default function App() {
   return (
@@ -20,20 +21,22 @@ export default function App() {
         />
 
         <Route 
-          path="/artist/:artistID/:artistName"
+          path="/artist/:artistID/:artistName/"
           exact
           component={ArtistPage}
         />
 
         <Route 
           exact
-          path="/release/:releaseID"
+          path="/release/:releaseID/:artistName/:releaseTitle"
           component={ReleasePage}
         />
 
-        {/* <Route 
-          path="/song/:songID"
-        />  */}
+        <Route 
+          exact
+          path="/song/:artistName/:recordingTitle"
+          component={LyricsPage}
+        />  
 
       </Switch>
     </Router>

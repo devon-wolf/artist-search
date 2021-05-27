@@ -20,10 +20,9 @@ const ArtistPage = () => {
   return (
     <div>
       <h1>{artistName}</h1>
-      {loading ? <Spinner/> : <ReleaseList releases={releases} />}
+      {loading ? <Spinner/> : <ReleaseList releases={releases} artistName={artistName}/>}
     </div>
   );
 };
                 
-
 export default ArtistPage;
