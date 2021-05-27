@@ -19,7 +19,7 @@ describe('Search component', () => {
     userEvent.type(input, 'The Who');
 
     const button = screen.getByLabelText('control-button');
-    userEvent.click(button);
+    userEvent.click(button); 
 
     await screen.findByAltText('spinner');
 
